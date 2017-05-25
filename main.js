@@ -48,49 +48,7 @@ function after_coma(a, o){
     var tr = document.createElement('tr');
     tbody.appendChild(tr);
 
-function add(){
-    var more = [];
-    for(var i=0; i< grid.length; i++){
-        if(grid[i] == 0){
-            more.push(1);
-        }else more.push(0);
-    }
-    console.log('Bevor',more);
-    var mem = 0;
-    if(more[0] == 1 ){ 
-        mem = 1;
-        more[0] = 0;
-    }else more[0] = 1;
-    for(var i=1; i < more.length; i++){
-        if(more[i] == 1 && mem == 1){
-            more[i] = 0;
-        }
-        else if(more[i] == 0 && mem == 1){
-            more[i] = 1;
-            mem = 0;
-        }
-    }
 
-    console.log('Nach',more);
-    
-    return more;
-
-}
-function griding(){
-    for (var i=length-1; i>=0; i--) {
-
-        var th = document.createElement('th');
-        th.innerText = i;
-        thead.appendChild(th);
-
-        
-        var td = document.createElement('td');
-        td.innerText = grid[i];
-
-        tr.appendChild(td);
-
-    }
-}
 function sizing(arg){
     var r = 0;
     var general;
