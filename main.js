@@ -1,47 +1,23 @@
-function before_coma(b, o){
-
-    var arr = [];
-
-    var i = 0;
-    while (b >= o){
-
-        arr[i] = b % o;
-        b = b / o;
-        b = b - (b%1);
-
-        i++;
+function translate(val){
+    var mas;
+    var general = [];
+    if (f) {
+        mas = arr;
+    }else mas = arr1;
+    console.log(val.length);
+    for(var i = 0; i < val.length; i++){
+        // console.log( mas[val[i]] );    
+        general.push(mas[val[i]]);
     }
-    arr[i]=b;
-   
-    return arr;
+    console.log(general);
+ 
 }
 
-function after_coma(a, o){
-    var mas = [];
-    var i = 0 ;
-    while( i <= 6 ){
-        a = a * o;
-        if (a >= 1.0){
-            var cile =  Math.floor(a);
-            mas[i] = cile;
-            a = a - cile;
-        }
-        else{
-            mas[i]=0;
-        }
-        i++;
-    }
-
-    return mas;
-
-
-}
+    const arr = ["0000","0001","0010","0011","0100","0101","0110","0111","1000","1001" ];
+    const arr1 = ["00000000","00000001","00000010","00000011","00000100","00000101","00000110","00000111","00001000","00001001" ];
     var val;
-    var osn;
-	var grid = [];
-    var sign;
+    var f = false;
    
-    osn = 2;
    
     var thead = document.getElementById('thead');
     var tbody = document.getElementById('tbody');
@@ -49,51 +25,17 @@ function after_coma(a, o){
     tbody.appendChild(tr);
 
 
-function sizing(arg){
-    var r = 0;
-    var general;
-    
+function sw(arg){
+    f = arg;
     var number = document.getElementById('number').value;
-    sign = number.indexOf('-');
-    if (sign == -1){
-       val = number;
-    }else 
-        {
-            val =  number.substring(sign+1, number.length);
-
-        }
-    
-   
-    var k =  val.indexOf('.');
-   
-    var int = val.substring(0,k);
-    var real = val - int;
-
-  
-    grid = before_coma(int, osn).reverse();
-    r = after_coma(real, 2);
-    console.log(grid);
-    
-    var len = before_coma(grid.length, osn).reverse();
-    console.log(len);
-    // console.log(grid.reverse());
-    console.log(r);
-    
-    
-    general = ( grid.concat(r) ).concat(len);
-    general = general.reverse();
-    console.log(general);
-    
-    
-    var length = grid.length;
-    console.log(grid);
+    var digits = (""+number).split("");
+    translate(digits);
 
 
     var children = thead.children;
     var childrenLen = thead.children.length;
     var childrenTR = tr.children;
     
-    /**************clearing*****************/
     if (children.length > 0){
         for(var i=0; i<childrenLen;i++){
             thead.removeChild(thead.children[0]);
@@ -101,36 +43,4 @@ function sizing(arg){
         }
     }
     
-    /***************Boxes*************/
-     for(var i=0; i<arg; i++){
-        var th = document.createElement('th');
-        th.innerText = arg-i-1;
-        thead.appendChild(th);
-
-        var td = document.createElement('td');
-       
-            td.innerText = 0;
-        
-     
-        tr.appendChild(td);        
-    }
-    /***************Boxes*************/
-
-    var length = general.length;
-    if (tr.children.length < length){
-        alert('ПЕРЕПОВНЕННЯ');
-    }else{
-       
-        for(var i=0; i<length; i++){
-         
-            childrenTR[children.length-i-1].innerText = general[i];
-         
-        }
-    }
-    childrenTR[0].innerText = 1;
-    childrenTR[arg-length].style = 'background : cyan';
-    childrenTR[0].style = 'background : aqua';
-    childrenTR[1].style = 'background : yellow';
-    console.log('length => ', length);
-
 }

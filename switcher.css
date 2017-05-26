@@ -23,12 +23,12 @@
     box-sizing: border-box;
 }
 .onoffswitch-inner:before {
-    content: "Байт";
+    content: "Упа";
     padding-left: 10px;
     background-color: #0275D8; color: #FFFFFF;
 }
 .onoffswitch-inner:after {
-    content: "Байт";
+    content: "НеУпа";
     padding-right: 10px;
     background-color: #d9534f; color: #FFFFFF;
     text-align: right;
