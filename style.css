@@ -1,3 +1,8 @@
+body{
+	/*background: #e2e2e2;*/
+}
+
+
 tr td{
 	border : 1px solid black;
 	width : 30px; 
@@ -5,9 +10,9 @@ tr td{
 	vertical-align: top;
 }
 
-/*tr td:nth-child(1),td:nth-child(2){
-	background : #a2a2a2;
-}*/
+tr td{
+	background : lightcoral;
+}
 
 tr td:nth-child(4),td:nth-child(8), td:nth-child(12),
 td:nth-child(16),td:nth-child(20),td:nth-child(24),td:nth-child(28){

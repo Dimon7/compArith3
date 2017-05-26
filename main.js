@@ -36,7 +36,7 @@ function after_coma(arg){
     return mas;
 }
 
-function fillBuildTable(arg, exp, man){
+function fillBuildTable(f, arg, exp, man){
 
     var thead = document.getElementById('thead');
     var tbody = document.getElementById('tbody');
@@ -60,6 +60,8 @@ function fillBuildTable(arg, exp, man){
     var childrenTR = tr.children;
     tbody.appendChild(tr);
 
+
+
     for(var i=0; i<arg; i++){
         var th = document.createElement('th');
         th.innerText = arg-i-1;
@@ -71,6 +73,10 @@ function fillBuildTable(arg, exp, man){
         
      
         tr.appendChild(td);        
+    }
+
+     if (f) {
+        childrenTR[0].innerText = 1;
     }
     var count = 0;
     if(arg == 32){
@@ -112,8 +118,9 @@ function fillBuildTable(arg, exp, man){
     var _real = 0, _int = 0; 
 
 function sizing(arg){
-    var general;
     
+    var f = false;    
+
     var number = document.getElementById('number').value;
     sign = number.indexOf('-');
     if (sign == -1){
@@ -121,6 +128,7 @@ function sizing(arg){
     }
     else{
             val =  number.substring(sign+1, number.length);
+            f = true;
         }
     
    
@@ -144,6 +152,6 @@ function sizing(arg){
     mantis = _int.concat(_real);
     mantis.shift();
 
-    fillBuildTable(arg, exponent, mantis);
+    fillBuildTable(f, arg, exponent, mantis);
     
 }
