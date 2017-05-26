@@ -1,66 +1,126 @@
-function before_coma(b, o){
-
+function before_coma(arg){
+    var o = 2;
     var arr = [];
 
     var i = 0;
-    while (b >= o){
+    while (arg >= o){
 
-        arr[i] = b % o;
-        b = b / o;
-        b = b - (b%1);
+        arr[i] = arg % o;
+        arg = arg / o;
+        arg = arg - (arg%1);
 
         i++;
     }
-    arr[i]=b;
+    arr[i]=arg;
    
     return arr;
 }
 
-function after_coma(a, o){
+function after_coma(arg){
+    var o = 2;
     var mas = [];
     var i = 0 ;
-    while( i <= 6 ){
-        a = a * o;
-        if (a >= 1.0){
-            var cile =  Math.floor(a);
+    while( i <= 7 ){
+        arg = arg * o;
+        if (arg >= 1.0){
+            var cile =  Math.floor(arg);
             mas[i] = cile;
-            a = a - cile;
+            arg = arg - cile;
         }
         else{
             mas[i]=0;
         }
-        i++;
+     i++;
     }
 
     return mas;
-
-
 }
-    var val;
-    var osn;
-	var grid = [];
-    var sign;
-   
-    osn = 2;
-   
+
+function fillBuildTable(arg, exp, man){
+
     var thead = document.getElementById('thead');
     var tbody = document.getElementById('tbody');
+    
+
+
+    var headChildren = thead.children;
+    var bodyChildren = tbody.children;
+    var len = headChildren.length;
+
+    if (len > 0){
+         tbody.children[0].remove();
+        for(var i=0; i < len; i++){
+            
+            thead.children[0].remove();
+            
+        }
+    }
+
     var tr = document.createElement('tr');
+    var childrenTR = tr.children;
     tbody.appendChild(tr);
 
+    for(var i=0; i<arg; i++){
+        var th = document.createElement('th');
+        th.innerText = arg-i-1;
+        thead.appendChild(th);
+
+        var td = document.createElement('td');
+       
+        td.innerText = 0;
+        
+     
+        tr.appendChild(td);        
+    }
+    var count = 0;
+    if(arg == 32){
+        count = 8;
+    }else {
+         count = 11;
+    }
+
+    for(var i=1; i <= count; i++){
+        
+        childrenTR[i].style = 'background : lightgreen';
+    }
+    count ++;
+    childrenTR[count].style = 'background: #f2f2f2; border : none;';
+    childrenTR[count].innerText = '1,';
+    
+
+    // console.log('exp',exp);
+    // console.log('man',man);
+
+    for(var i=1; i <= exp.length; i++){
+         
+        childrenTR[i].innerText = exp[i-1];
+         
+    }
+    
+    var i=count+1;
+    for(var j=0; j < man.length; j++){
+        childrenTR[i].innerText = man[j];
+        i++;
+    }
+    // console.log(count);
+
+}
+
+    var val;
+
+    var sign, mantis = [], exponent = 0;
+    var _real = 0, _int = 0; 
 
 function sizing(arg){
-    var r = 0;
     var general;
     
     var number = document.getElementById('number').value;
     sign = number.indexOf('-');
     if (sign == -1){
        val = number;
-    }else 
-        {
+    }
+    else{
             val =  number.substring(sign+1, number.length);
-
         }
     
    
@@ -68,69 +128,22 @@ function sizing(arg){
    
     var int = val.substring(0,k);
     var real = val - int;
-
   
-    grid = before_coma(int, osn).reverse();
-    r = after_coma(real, 2);
-    console.log(grid);
+    _int = before_coma(int).reverse();
+    _real = after_coma(real);
     
-    var len = before_coma(grid.length, osn).reverse();
-    console.log(len);
-    // console.log(grid.reverse());
-    console.log(r);
-    
-    
-    general = ( grid.concat(r) ).concat(len);
-    general = general.reverse();
-    console.log(general);
-    
-    
-    var length = grid.length;
-    console.log(grid);
+    var len = _int.length;
 
-
-    var children = thead.children;
-    var childrenLen = thead.children.length;
-    var childrenTR = tr.children;
-    
-    /**************clearing*****************/
-    if (children.length > 0){
-        for(var i=0; i<childrenLen;i++){
-            thead.removeChild(thead.children[0]);
-            tr.removeChild(tr.children[0]);
-        }
-    }
-    
-    /***************Boxes*************/
-     for(var i=0; i<arg; i++){
-        var th = document.createElement('th');
-        th.innerText = arg-i-1;
-        thead.appendChild(th);
-
-        var td = document.createElement('td');
-       
-            td.innerText = 0;
+    if(arg == 32){
+        len += 127;
         
-     
-        tr.appendChild(td);        
-    }
-    /***************Boxes*************/
+    }else len += 1023;
+    
+    exponent = before_coma(len).reverse();
 
-    var length = general.length;
-    if (tr.children.length < length){
-        alert('ПЕРЕПОВНЕННЯ');
-    }else{
-       
-        for(var i=0; i<length; i++){
-         
-            childrenTR[children.length-i-1].innerText = general[i];
-         
-        }
-    }
-    childrenTR[0].innerText = 1;
-    childrenTR[arg-length].style = 'background : cyan';
-    childrenTR[0].style = 'background : aqua';
-    childrenTR[1].style = 'background : yellow';
-    console.log('length => ', length);
+    mantis = _int.concat(_real);
+    mantis.shift();
 
+    fillBuildTable(arg, exponent, mantis);
+    
 }

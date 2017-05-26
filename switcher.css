@@ -23,35 +23,35 @@
     box-sizing: border-box;
 }
 .onoffswitch-inner:before {
-    content: "Байт";
+    content: "32";
     padding-left: 10px;
     background-color: #0275D8; color: #FFFFFF;
 }
 .onoffswitch-inner:after {
-    content: "Байт";
+    content: "32";
     padding-right: 10px;
     background-color: #d9534f; color: #FFFFFF;
     text-align: right;
 
 }
 .onoffswitch-inner1:before {
-    content: "Слово";
+    content: "32";
     padding-left: 10px;
     background-color: #0275D8; color: #FFFFFF;
 }
 .onoffswitch-inner1:after {
-    content: "Слово";
+    content: "32";
     padding-right: 10px;
     background-color: #d9534f; color: #FFFFFF;
     text-align: right;
 }
 .onoffswitch-inner2:before {
-    content: "Подвійне слово";
+    content: "64";
     padding-left: 10px;
     background-color: #0275D8; color: #FFFFFF;
 }
 .onoffswitch-inner2:after {
-    content: "Подвійне слово";
+    content: "64";
     padding-right: 10px;
     background-color: #d9534f; color: #FFFFFF;
     text-align: right;

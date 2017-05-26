@@ -1,7 +1,6 @@
 tr td{
 	border : 1px solid black;
 	width : 30px; 
-	height: 30px;
 	text-align: center;
 	vertical-align: top;
 }
@@ -12,8 +11,26 @@ tr td{
 
 tr td:nth-child(4),td:nth-child(8), td:nth-child(12),
 td:nth-child(16),td:nth-child(20),td:nth-child(24),td:nth-child(28){
-	display : block;
-	margin-right: 5px;
+	/*display : block;*/
+	/*margin-right: 5px;*/
 }
+
+tr td:nth-child(1) {
+	background: powderblue;
+}
+
+/* tr td:nth-child(10){
+	background: #f2f2f2;
+	border : none;
+} */
+
+/* tr td:nth-child(2),tr td:nth-child(3),tr td:nth-child(4),tr td:nth-child(5),tr td:nth-child(6),tr td:nth-child(7),
+tr td:nth-child(8),tr td:nth-child(9) {
+	background: lightgreen;
+} */
+
+/* tr td{
+	background: lightcoral;
+} */
 
 
