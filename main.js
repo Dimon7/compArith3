@@ -6,7 +6,6 @@ function translate(val){
     }else mas = arr1;
     console.log(val.length);
     for(var i = 0; i < val.length; i++){
-        // console.log( mas[val[i]] );    
         general.push(mas[val[i]]);
     }
     console.log(general);
@@ -28,13 +27,13 @@ function translate(val){
 function sw(arg){
     f = arg;
     var number = document.getElementById('number').value;
-    var digits = (""+number).split("");
-    translate(digits);
+    var digits = number.split("");
 
+	  translate(digits);
 
-    var children = thead.children;
-    var childrenLen = thead.children.length;
-    var childrenTR = tr.children;
+		var children = thead.children;
+		var childrenLen = thead.children.length;
+		var childrenTR = tr.children;
     
     if (children.length > 0){
         for(var i=0; i<childrenLen;i++){
