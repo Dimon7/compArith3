@@ -13,7 +13,7 @@ tr td{
 tr td:nth-child(4),td:nth-child(8), td:nth-child(12),
 td:nth-child(16),td:nth-child(20),td:nth-child(24),td:nth-child(28){
 	display : block;
-	margin-right: 5px;
+	margin-right: 6px;
 }
 
 
